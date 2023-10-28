@@ -44,6 +44,24 @@ def chain(img):
     chain.append(0)
     return chain
 
+def curvature(chain):
+  result = []
+  for i in range(len(chain)):
+    if i == len(chain)-1:
+      result.append(chain[i] - chain[0])
+    else:
+      result.append(chain[i] - chain[i+1])
+  return result
+
+def normalize(chain):
+  for i in range(len(chain)):
+    chain[i] = chain[i] % 8
+  return chain
+
+
+def is_equal(curvature, normalize):
+    return curvature == normalize
+
 
 test = np.array(
     [   [0, 0, 0, 0, 0, 0],
@@ -87,4 +105,24 @@ for i in range(1, max_lbl + 1):
     lb[image_labeled == i] = 1
     print(f"Figure {i}: {chain(image_labeled)}")
 plt.imshow(image)
+plt.show()
+
+fig1 = np.zeros((5, 5))
+fig1[1:3, 1:-1] = 1
+fig2 = fig1.T
+
+chain1 = chain(fig1)
+chain2 = chain(fig2)
+curv1 = curvature(chain1)
+curv2 = curvature(chain2)
+norm1 = normalize(curv1)
+norm2 = normalize(curv2)
+print(chain1, chain2)
+print(curv1, curv2)
+print(norm1, norm2)
+print(is_equal(curv1, norm1))
+print(is_equal(curv2, norm2))
+plt.imshow(fig1)
+plt.show()
+plt.imshow(fig2)
 plt.show()
