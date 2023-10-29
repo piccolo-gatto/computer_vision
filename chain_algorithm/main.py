@@ -59,8 +59,12 @@ def normalize(chain):
   return chain
 
 
-def is_equal(curvature, normalize):
-    return curvature == normalize
+def is_equal(res1, res2):
+    res1_copy = res1.copy()
+    while res1_copy != res2:
+        for i in range(len(res1_copy) - 2):
+          res1_copy.append(res1_copy.pop(0))
+    return res1_copy == res2
 
 
 test = np.array(
@@ -120,8 +124,8 @@ norm2 = normalize(curv2)
 print(chain1, chain2)
 print(curv1, curv2)
 print(norm1, norm2)
-print(is_equal(curv1, norm1))
-print(is_equal(curv2, norm2))
+print(is_equal(curv1, curv2))
+print(is_equal(norm1, norm2))
 plt.imshow(fig1)
 plt.show()
 plt.imshow(fig2)
