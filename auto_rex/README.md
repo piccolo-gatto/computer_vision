@@ -1,1 +1,1 @@
-![111](https://github.com/piccolo-gatto/computer_vision/assets/108530800/e5e8e8c3-0a3a-4ec2-ad66-fbfa58afa20a)
+![11111](https://github.com/piccolo-gatto/computer_vision/assets/108530800/c0e6d398-84bd-444e-99f0-a8a731c3da9a)
